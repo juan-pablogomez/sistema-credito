@@ -68,8 +68,19 @@ npm run test
 #### A tener en cuenta
 * Se utilizan Hooks de React para el filtrado de creditos 'Aprobados' o 'Rechazados', evitando así la re-renderización de componenentes o peticiones HTTP adicionales para el filtrado de creditos por estado.
 * Se crea CSS básico/necesario para las vistas de la tabla y el formulario
+
 ![Imagen de aplicación](images-md/listaCreditos.png)
 ![Imagen de aplicacion](images-md/listaFiltered.png)
+
+#### Aprobación o rechazo del crédito
+
+Para la lógica de la aprobación del crédito se uso la siguiente lógica
+  * Se calcula la tasa de interes de acuerdo al valor ingresado con la formula = (monto * termino * (tasadeInteres / 100)). Ya que no se pide el numero de la tasa de interes en porcentaje sino como entero
+  * Se aprueba si el ingreso mensual es mayor a (montoSolicitado + tasaDeInteres / meses)
+  * En el código, la constante 'status' que hace parte del objeto que se envía a la base de datos en el regístro de un crédito, toma el valor 'approved' si se cumplen las condiciones de la formula anterior, de lo contrario tomará el valor 'rejected'. Este valor se guarda en base de datos al momento de ejecutar el POST y apartir de esta propiedad se filtra en la anterior table como 'Aprobado' ó 'Rechazado'.
+```js
+      const status = monthly_income > ((amount + (amount * term * (interest_rate / 100))) / term) ? 'approved' : 'rejected'
+```
 
 
 #### Compilación de Frontend
