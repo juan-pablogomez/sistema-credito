@@ -1,0 +1,11 @@
+{
+  "name": "sistema-creditos",
+  "version": "1.0.0",
+  "description": "Prueba técnica para crecerá",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Juan Pablo Gómez",
+  "license": "ISC"
+}
