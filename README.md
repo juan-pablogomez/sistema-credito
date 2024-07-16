@@ -1,5 +1,4 @@
-Markdown
-# Sistema de simulación de Créditos
+# Sistema de simulación de créditos
 
 ### Descripción
 Este proyecto es una prueba técnica que implementa una aplicación full-stack. El frontend, desarrollado con React, proporciona una interfaz de usuario intuitiva, mientras que el backend, construido con Node.js y TypeScript, maneja la lógica del negocio y las bases de datos. Se han utilizado Jest y supertest para garantizar la calidad del código a través de pruebas unitarias e integradas.
@@ -7,7 +6,7 @@ Este proyecto es una prueba técnica que implementa una aplicación full-stack. 
 ### Tecnologías Utilizadas
 * **Frontend:** React
 * **Backend:** Node.js, TypeScript, Express
-* **Base de datos:** SQL
+* **Base de datos:** SQL, MongoDB y Mongoose ORM
 * **Pruebas:** Jest, supertest
 
 ### Instalación y Ejecución
@@ -16,78 +15,67 @@ Este proyecto es una prueba técnica que implementa una aplicación full-stack. 
 
 #### Clonar el repositorio
 ```bash
-git clone https://tu-repositorio.git
-Usa el código con precaución.
+git clone https://github.com/juan-pablogomez/sistema-credito.git
+```
 
-Instalar dependencias
-Bash
-cd tu-proyecto
+#### Instalar dependencias
+```bash
+cd sistema-creditos
 npm install
-Usa el código con precaución.
+```
 
-Configurar variables de entorno
-Crea un archivo .env en la raíz del proyecto y define tus variables de entorno. Por ejemplo:
+#### Configurar variables de entorno
+Crea un archivo .env en la raíz de la carpeta "backend" y define tus variables de entorno. Por ejemplo:
+``` js
+PORT = 4000 
+DB_NAME = sistema_creditos
+DB_USER = root
+DB_HOST = localhost
+```
 
-DATABASE_URL=postgres://usuario:contraseña@localhost:5432/tu_base_de_datos
-Ejecutar el servidor de desarrollo
-Bash
+* Debe crear la base de datos "sistema_creditos" (en este caso) en su gestor de base de datos de preferencia.
+* La aplicación se encargará de crear las tablas una vez inicializada su ejecución.
+
+#### Ejecutar la aplicación completa desde el directorio raiz (sistema-credito)
+``` bash
 npm start
-Usa el código con precaución.
+```
+Este script de npm permitirá inicializar los proyectos de la carpeta "client" y de la carpeta "backend" al mismo tiempo
 
-Ejecutar pruebas
-Bash
-npm test
-Usa el código con precaución.
+#### Ejecutar el servidor de desarrollo del Backend
+Si desea ejecutar solo el proyecto del backend, debe entrar a la carpeta y ejecutar el comando
+``` bash
+cd backend
+npm run dev
+```
+Podrá ejecutar las rutas y operaciones de la API desde http://localhost:[PORT]/api/credits, habiendo ya configurado la variable de entorno PORT en el archivo .env de la raiz del proyecto de la carpeta backend.
 
-Estructura del Proyecto
-tu-proyecto/
-├── .env
-├── package.json
-├── README.md
-├── public/
-│   └── index.html
-├── src/
-│   ├── components/
-│   ├── pages/
-│   ├── services/
-│   └── App.tsx
-├── server/
-│   ├── index.ts
-│   ├── routes/
-│   ├── services/
-│   └── tests/
-├── docker-compose.yml  # (opcional)
-Contribuciones
-[Instrucciones claras sobre cómo contribuir al proyecto, incluyendo el proceso de fork, creación de ramas y envío de pull requests.]
+#### Ejecutar el servidor de desarollo del Frontend
+Si por el contrario solo desea ejecutar solo el proyecto del frontend, debe entrar a la carpeta y ejecutar el comando
+``` bash
+cd client
+npm run dev
+```
+Esta operación indicará que se ha inicializado la ejecución del proyecto de React con Vite y se podra visualizar en http://localhost:5173, puerto por defeto para aplicaciones de Vite.
 
-Licencia
-[Mencionar la licencia bajo la cual se distribuye el código, ej: MIT]
 
-Agradecimientos
-[Agradecer a quienes hayan colaborado en el proyecto.]
+#### Ejecutar pruebas
+Desde el directorio raíz, o desde el directorio "backend" puede ejecutar las pruebas del archivo "./src/test/routes.spec.ts"
+``` bash
+npm run test
+```
 
-Próximos pasos
-[Mencionar los próximos pasos o funcionalidades a implementar.]
+#### A tener en cuenta
+* Se utilizan Hooks de React para el filtrado de creditos 'Aprobados' o 'Rechazados', evitando así la re-renderización de componenentes o peticiones HTTP adicionales para el filtrado de creditos por estado.
+* Se crea CSS básico/necesario para las vistas de la tabla y el formulario
+![Imagen de aplicación](images-md/listaCreditos.png)
+![Imagen de aplicacion](images-md/listaFiltered.png)
 
-Consideraciones adicionales:
 
-Imágenes y diagramas: Incorpora imágenes o diagramas para visualizar la arquitectura del proyecto o explicar conceptos complejos.
-Ejemplos de uso: Proporciona ejemplos de cómo utilizar las diferentes funcionalidades de la aplicación.
-Documentación adicional: Enlaza a cualquier documentación adicional (wikis, blogs, etc.) que pueda ser útil.
-Optimización para SEO: Utiliza palabras clave relevantes en el README.md para mejorar la visibilidad del proyecto en los motores de búsqueda.
-Herramientas útiles para generar READMEs:
+#### Compilación de Frontend
+Para la generación de archivos estáticos del frontend para producción, se debe correr el siguiente comando
+``` bash
+cd client
+npm run build
+```
 
-GitHub Copilot: Sugiere completado de código y puede ayudarte a generar secciones del README.
-Generadores de READMEs en línea: Existen herramientas que te permiten crear READMEs personalizados con plantillas y ejemplos.
-Ejemplo de una sección de "Contribuciones":
-
-Markdown
-### Contribuciones
-¡Las contribuciones son bienvenidas! Para contribuir a este proyecto, sigue estos pasos:
-
-1. **Forkea** el repositorio.
-2. **Crea una nueva rama** para tu característica o corrección de errores.
-3. **Realiza los cambios** y asegúrate de que todas las pruebas pasen.
-4. **Envía un pull request**.
-
-**Por favor, asegúrate de seguir nuestro código de conducta.**
